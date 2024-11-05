@@ -32,24 +32,17 @@ const DealsChart = () => {
         data: dealData,
         xField: 'timeText',
         yField: 'value',
-        isStack: false,
+        stack: false,
         seriesField: 'state',
-        animation: true,
-        startOnZero: false,
-        smooth: true,
+        
+       
+        
         legend: {
             offsetY: -6
         },
-        yAxis: {
-            tickCount: 4,
-            label: {
-                formatter: (v: string) => {
-                    return `$${Number(v) /1000}K`
-                }
-            }
-        },
+        
         tooltip: {
-            formatter: (data) => {
+            formatter: (data: { state: string; value: number }) => {
                 return {
                     name: data.state,
                     value: `$${Number(data.value) /1000}K`,
